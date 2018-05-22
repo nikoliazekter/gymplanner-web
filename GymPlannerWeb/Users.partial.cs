@@ -11,11 +11,13 @@ namespace GymPlannerWeb
     {
         public class UsersMD
         {
-            [Required]
+            [Required(ErrorMessage = "Це поле обов'язкове")]
             [Display(Name = "Логін")]
             public string Login { get; set; }
 
-            [Required]
+            [Required(ErrorMessage = "Це поле обов'язкове")]
+            [DataType(DataType.Password)]
+            [StringLength(1, ErrorMessage = "Пароль мусить містити принаймні 1 символ")]
             [Display(Name = "Пароль")]
             public string Password { get; set; }
 

@@ -1,0 +1,30 @@
+﻿@model GymPlannerWeb.Days
+
+@{
+    ViewBag.Title = "CalendarRender";
+}
+
+<h2>CalendarRender</h2>
+
+<div>
+    <h4>Days</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comment)
+        </dd>
+
+    </dl>
+</div>
