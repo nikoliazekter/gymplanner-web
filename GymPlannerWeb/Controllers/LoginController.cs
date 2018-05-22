@@ -18,13 +18,6 @@ namespace GymPlannerWeb.Controllers
         [HttpPost]
         public ActionResult SignIn(Users user)
         {
-            foreach (ModelState modelState in ViewData.ModelState.Values)
-            {
-                foreach (ModelError error in modelState.Errors)
-                {
-                    Console.Out.WriteLine(error.ErrorMessage);
-                }
-            }
             if (ModelState.IsValid)
             {
                 var user2 = (from u in db.Users where (u.Login == user.Login && u.Password == user.Password) select u).FirstOrDefault();
@@ -34,6 +27,29 @@ namespace GymPlannerWeb.Controllers
                 }
             }
             return RedirectToAction("Login");
+        }
+
+        public ActionResult Create()
+        {
+            Users U = new Users();
+            ViewBag.CmpList = db.Users.ToList();
+            return View(U);
+        }
+
+        [HttpPost]
+        public ActionResult CreateU(Users U)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                    db.Users.Add(U);
+                db.SaveChanges();
+                return RedirectToAction("Login");
+            }
+            catch (Exception)
+            {
+                return View(U);
+            }
         }
     }
 }

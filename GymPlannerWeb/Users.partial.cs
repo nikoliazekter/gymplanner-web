@@ -17,7 +17,7 @@ namespace GymPlannerWeb
 
             [Required(ErrorMessage = "Це поле обов'язкове")]
             [DataType(DataType.Password)]
-            [StringLength(1, ErrorMessage = "Пароль мусить містити принаймні 1 символ")]
+            [StringLength(16, MinimumLength = 4, ErrorMessage = "Пароль мусить містити від 4 до 16 символів")]
             [Display(Name = "Пароль")]
             public string Password { get; set; }
 
