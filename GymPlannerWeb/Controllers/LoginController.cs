@@ -16,6 +16,7 @@ namespace GymPlannerWeb.Controllers
         }
 
         [HttpPost]
+        [ValidateAntiForgeryToken]
         public ActionResult SignIn(Users user)
         {
             if (ModelState.IsValid)
@@ -25,31 +26,17 @@ namespace GymPlannerWeb.Controllers
                 {
                     return RedirectToAction("CalendarRender", "Calendar", new { user.Login });
                 }
+                else
+                {
+                    //ModelState.AddModelError("Помилка","Неправильний логін чи пароль!");
+                }
             }
             return RedirectToAction("Login");
         }
 
         public ActionResult Create()
         {
-            Users U = new Users();
-            ViewBag.CmpList = db.Users.ToList();
-            return View(U);
-        }
-
-        [HttpPost]
-        public ActionResult CreateU(Users U)
-        {
-            try
-            {
-                if (ModelState.IsValid)
-                    db.Users.Add(U);
-                db.SaveChanges();
-                return RedirectToAction("Login");
-            }
-            catch (Exception)
-            {
-                return View(U);
-            }
-        }
+            return RedirectToAction("NewAccount", "NewAccount");
+    }
     }
 }

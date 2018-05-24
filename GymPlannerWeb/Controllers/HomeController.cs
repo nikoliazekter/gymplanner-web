@@ -10,7 +10,7 @@ namespace GymPlannerWeb.Controllers
     {
         public ActionResult Index()
         {
-            return View();
+            return RedirectToAction("Login", "Login");
         }
 
         public ActionResult About()

@@ -7,7 +7,7 @@
 <h2>Новий користувач</h2>
 
 
-@using (Html.BeginForm("CreateU", "Login", FormMethod.Post))
+@using (Html.BeginForm("CreateUser", "NewAccount", FormMethod.Post))
 {
     @Html.AntiForgeryToken()
 
@@ -48,7 +48,7 @@
 }
 
 <div>
-    @Html.ActionLink("Назад до авторизації", "Login")
+    @Html.ActionLink("Назад до авторизації", "Back")
 </div>
 
 @section Scripts {
