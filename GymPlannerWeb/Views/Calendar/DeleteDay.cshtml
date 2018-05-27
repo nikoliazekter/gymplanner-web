@@ -1,0 +1,38 @@
+﻿@model GymPlannerWeb.Days
+
+@{
+    ViewBag.Title = "Видалити день";
+}
+
+<h2>DeleteDay</h2>
+
+<h3>Ви дійсно хочете видалити цей день?</h3>
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Comment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Comment)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Видалити" class="btn btn-default" />
+        </div>
+    }
+</div>

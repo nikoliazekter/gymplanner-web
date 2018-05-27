@@ -271,6 +271,7 @@
     <Content Include="Views\Workout\Workout.cshtml" />
     <Content Include="Views\Workout\_AddSet.cshtml" />
     <Content Include="Views\Day\DeleteWorkout.cshtml" />
+    <Content Include="Views\Calendar\DeleteDay.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
