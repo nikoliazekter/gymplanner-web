@@ -22,6 +22,7 @@ namespace GymPlannerWeb
             public string Password { get; set; }
 
             [Display(Name = "Ім'я")]
+            [DisplayFormat(ConvertEmptyStringToNull = false)]
             public string Name { get; set; }
         }
     }

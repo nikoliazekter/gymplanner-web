@@ -16,6 +16,7 @@ namespace GymPlannerWeb
             public string Name { get; set; }
 
             [Display(Name = "Інформація")]
+            [DisplayFormat(ConvertEmptyStringToNull = false)]
             public string Information { get; set; }
         }
     }

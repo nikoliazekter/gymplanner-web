@@ -10,13 +10,14 @@ namespace GymPlannerWeb.Controllers
     {
         private NewGymPlannerEntities db = new NewGymPlannerEntities();
 
-        public ActionResult Login()
+        [HttpGet]
+        public ActionResult Login(Users user)
         {
-            return View();
+            return View(user);
         }
 
         [HttpPost]
-        [ValidateAntiForgeryToken]
+        [ActionName("Login")]
         public ActionResult SignIn(Users user)
         {
             if (ModelState.IsValid)
@@ -28,15 +29,15 @@ namespace GymPlannerWeb.Controllers
                 }
                 else
                 {
-                    //ModelState.AddModelError("Помилка","Неправильний логін чи пароль!");
+                    ModelState.AddModelError("", "Неправильний логін чи пароль!");
                 }
             }
-            return RedirectToAction("Login");
+            return View(user);
         }
 
         public ActionResult Create()
         {
             return RedirectToAction("NewAccount", "NewAccount");
-    }
+        }
     }
 }

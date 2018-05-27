@@ -19,6 +19,7 @@ namespace GymPlannerWeb
             public System.DateTime Date { get; set; }
 
             [Display(Name = "Коментар")]
+            [DisplayFormat(ConvertEmptyStringToNull = false)]
             public string Comment { get; set; }
         }
     }

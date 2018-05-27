@@ -15,29 +15,31 @@ namespace GymPlannerWeb.Controllers
     {
         private NewGymPlannerEntities db = new NewGymPlannerEntities();
 
-        public ActionResult NewAccount()
+        [HttpGet]
+        public ActionResult NewAccount(Users user)
         {
-            return View();
+            return View(user);
         }
 
         [HttpPost]
-        public ActionResult CreateUser(Users U)
+        [ActionName("NewAccount")]
+        public ActionResult CreateUser(Users user)
         {
             try
             {
-                if (UsersExists(U.Login))
+                if (UsersExists(user.Login))
                 {
-                    //ViewBag.Message = "Користувач з таким логіном вже існує!";
-                    return View(U);
+                    ModelState.AddModelError("", "Користувач з таким логіном вже існує!");
+                    return View(user);
                 }
                 if (ModelState.IsValid)
-                    db.Users.Add(U);
+                    db.Users.Add(user);
                     db.SaveChanges();
                     return RedirectToAction("Login", "Login");
             }
             catch (Exception)
             {
-                return View(U);
+                return View(user);
             }
         }
         public ActionResult Back()
