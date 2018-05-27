@@ -1,12 +1,10 @@
 ﻿@model GymPlannerWeb.Workouts
+
 @{
-    ViewBag.Title = "Редагування підходів";
+    ViewBag.Title = "Видалити тренування";
 }
 
-<h2>@Html.DisplayFor(model => model.Exercises.First().Name)</h2>
-
-@{Html.RenderAction("_AddSet");}
-
+<h3>Ви дійсно хочете видалити @Html.DisplayFor(model => model.Exercises.First().Name)?</h3>
 <table class="table">
     <tr>
         <th>
@@ -26,9 +24,16 @@
             <td>
                 @Html.DisplayFor(modelItem => set.Weight)
             </td>
-            <td>
-                @Html.ActionLink("Видалити", "Delete", set)
-            </td>
         </tr>
     }
 </table>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-actions no-color">
+        <input type="submit" value="Видалити" class="btn btn-default" />
+    </div>
+}
+
