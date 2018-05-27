@@ -1,0 +1,39 @@
+﻿@model GymPlannerWeb.Workouts
+@{
+    ViewBag.Title = "Редагування підходів";
+}
+
+<h2>@Html.DisplayFor(model => model.Exercises.First().Name)</h2>
+
+@{Html.RenderAction("_AddSet");}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Sets.FirstOrDefault().Num_Reps)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sets.FirstOrDefault().Weight)
+        </th>
+        <th></th>
+    </tr>
+    <tr>
+        <td></td>
+        <td></td>
+        <td></td>
+    </tr>
+    @foreach (var set in Model.Sets)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => set.Num_Reps)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => set.Weight)
+            </td>
+            <td>
+                @Html.ActionLink("Видалити", "Delete", set)
+            </td>
+        </tr>
+    }
+</table>

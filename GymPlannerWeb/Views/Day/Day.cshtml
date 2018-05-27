@@ -1,0 +1,53 @@
+﻿@model IEnumerable<GymPlannerWeb.Workouts>
+
+@{
+    ViewBag.Title = "Тренування";
+}
+
+<h2>Тренування</h2>
+<p>
+    @Html.ActionLink("Нове тренування", "Create")
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Exercises.FirstOrDefault().Name)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sets.FirstOrDefault().Num_Reps)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Sets.FirstOrDefault().Weight)
+        </th>
+        <th></th>
+    </tr>
+    @foreach (var workout in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => workout.Exercises.First().Name)
+            </td>
+            <td></td>
+            <td></td>
+            <td>
+                @Html.ActionLink("Редагувати", "Workout", "Workout", workout, null) |
+                @Html.ActionLink("Видалити", "Delete", workout)
+            </td>
+        </tr>
+        foreach (var set in workout.Sets)
+        {
+            <tr>
+                <td></td>
+                <td>
+                    @Html.DisplayFor(modelItem => set.Num_Reps)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => set.Weight)
+                </td>
+                <td>
+                </td>
+            </tr>
+        }
+    }
+</table>

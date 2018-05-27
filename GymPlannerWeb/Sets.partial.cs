@@ -19,6 +19,7 @@ namespace GymPlannerWeb
             public int Num_Reps { get; set; }
 
             [Display(Name = "Вага")]
+            [DisplayFormat(DataFormatString = "{0:0.##}")]
             public decimal Weight { get; set; }
         }
     }

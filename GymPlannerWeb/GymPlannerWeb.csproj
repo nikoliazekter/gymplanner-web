@@ -165,6 +165,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\NewAccountController.cs" />
+    <Compile Include="Controllers\WorkoutController.cs" />
     <Compile Include="Days.cs">
       <DependentUpon>ModelEF.tt</DependentUpon>
     </Compile>
@@ -266,7 +267,9 @@
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\NewAccount\NewAccount.cshtml" />
     <Content Include="Views\Calendar\Calendar.cshtml" />
-    <Content Include="Views\Day\Workouts.cshtml" />
+    <Content Include="Views\Day\Day.cshtml" />
+    <Content Include="Views\Workout\Workout.cshtml" />
+    <Content Include="Views\Workout\_AddSet.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

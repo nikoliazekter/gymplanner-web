@@ -10,9 +10,9 @@ namespace GymPlannerWeb.Controllers
     {
         private NewGymPlannerEntities db = new NewGymPlannerEntities();
 
-        public ActionResult Workouts(Days day)
+        public ActionResult Day(Days day)
         {
-            return View((from d in db.Days where d.ID_Day == d.ID_Day select d).First().Workouts.ToList());
+            return View((from d in db.Days where d.ID_Day == day.ID_Day select d).First().Workouts.ToList());
         }
     }
 }
