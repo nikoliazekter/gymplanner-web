@@ -6,13 +6,13 @@ using System.Web.Mvc;
 
 namespace GymPlannerWeb.Controllers
 {
-    public class CalendarController : Controller
+    public class DayController : Controller
     {
         private NewGymPlannerEntities db = new NewGymPlannerEntities();
 
-        public ActionResult Calendar(Users user)
+        public ActionResult Workouts(Days day)
         {
-            return View((from u in db.Users where u.Login == user.Login select u).First().Days.ToList());
+            return View((from d in db.Days where d.ID_Day == d.ID_Day select d).First().Workouts.ToList());
         }
     }
 }

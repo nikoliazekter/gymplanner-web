@@ -16,6 +16,7 @@ namespace GymPlannerWeb
             public int ID_Day { get; set; }
 
             [Display(Name = "Дата")]
+            [DataType(DataType.Date)]
             public System.DateTime Date { get; set; }
 
             [Display(Name = "Коментар")]
