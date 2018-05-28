@@ -1,0 +1,16 @@
+﻿@model  byte[]
+@{
+    ViewBag.Title = "Статистика";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<head>
+    <title>Статистика</title>
+</head>
+<body>
+    <li>@Html.ActionLink("Вибрати вправу", "Index", "ExerciseSelection")</li>
+    <p>@Session["Selected"]</p>
+    <div class="row">
+        <img src="@Url.Action("Stat", "Stat")" />
+    </div>
+</body>

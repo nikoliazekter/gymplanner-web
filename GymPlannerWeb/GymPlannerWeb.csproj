@@ -64,6 +64,7 @@
     </Reference>
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
+    <Reference Include="System.Web.DataVisualization" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -163,8 +164,10 @@
     <Compile Include="Controllers\CalendarController.cs" />
     <Compile Include="Controllers\DayController.cs" />
     <Compile Include="Controllers\ExerciseController.cs" />
+    <Compile Include="Controllers\ExerciseSelectionController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\NewAccountController.cs" />
+    <Compile Include="Controllers\StatController.cs" />
     <Compile Include="Controllers\WorkoutController.cs" />
     <Compile Include="Days.cs">
       <DependentUpon>ModelEF.tt</DependentUpon>
@@ -356,11 +359,12 @@
     <Content Include="Views\Day\CreateWorkout.cshtml" />
     <Content Include="Views\Shared\SignedOutLayout.cshtml" />
     <Content Include="Views\Exercises\Exercises.cshtml" />
+    <Content Include="Views\Stat\Stat.cshtml" />
+    <Content Include="Views\ExerciseSelection\SelectExercise.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Models\" />
-    <Folder Include="Views\Exercise\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
