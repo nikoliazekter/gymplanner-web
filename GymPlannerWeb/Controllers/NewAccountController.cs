@@ -42,10 +42,7 @@ namespace GymPlannerWeb.Controllers
                 return View(user);
             }
         }
-        public ActionResult Back()
-        {
-            return RedirectToAction("Login", "Login");
-        }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)

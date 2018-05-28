@@ -5,6 +5,22 @@
 }
 
 <h2>Календар</h2>
+<h4>Оберіть день</h4>
+@using (Html.BeginForm("GoToDay", "Calendar"))
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <input name="date" data-provide="datepicker" data-date-format="dd/mm/yyyy" autocomplete="off"/>
+                <input type="submit" value="Перейти" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
 <table class="table">
     <tr>
         <th>
@@ -25,8 +41,8 @@
                 @Html.DisplayFor(modelItem => item.Comment)
             </td>
             <td>
-                @Html.ActionLink("Переглянути", "Day", "Day", item, null) |
-                @Html.ActionLink("Видалити", "DeleteDay", item)
+                @Html.ActionLink("Переглянути", "Day", "Day", new { dayId = item.ID_Day }, null) |
+                @Html.ActionLink("Видалити", "DeleteDay", new { dayId = item.ID_Day })
             </td>
         </tr>
     }

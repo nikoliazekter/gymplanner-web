@@ -9,7 +9,7 @@ namespace GymPlannerWeb.Controllers
     public class WorkoutController : Controller
     {
         private NewGymPlannerEntities db = new NewGymPlannerEntities();
-        
+
         public ActionResult Workout(Workouts workout)
         {
             Session["ID_Workout"] = workout.ID_Workout;

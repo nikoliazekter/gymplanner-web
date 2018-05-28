@@ -10,10 +10,13 @@ namespace GymPlannerWeb.Controllers
     {
         private NewGymPlannerEntities db = new NewGymPlannerEntities();
 
-        public ActionResult Day(Days day)
+        public ActionResult Day(int dayId)
         {
-            Session["ID_Day"] = day.ID_Day;
-            return View((from d in db.Days where d.ID_Day == day.ID_Day select d).First().Workouts.ToList());
+            if (dayId == -1)
+                dayId = (int)Session["ID_Day"];
+            else
+                Session["ID_Day"] = dayId;
+            return View((from d in db.Days where d.ID_Day == dayId select d).First().Workouts.ToList());
         }
 
         public ActionResult CreateWorkout()
@@ -39,8 +42,7 @@ namespace GymPlannerWeb.Controllers
             catch (Exception)
             {
             }
-            int dayId = (int)Session["ID_Day"];
-            return RedirectToAction("Day", (from d in db.Days where d.ID_Day == dayId select d).First());
+            return RedirectToAction("Day", (int)Session["ID_Day"]);
         }
     }
 }
