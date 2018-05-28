@@ -1,0 +1,13 @@
+﻿@model GymPlannerWeb.Workouts
+
+@{
+    ViewBag.Title = "Додати тренування";
+}
+
+<h2>CreateWorkout</h2>
+
+@{Html.RenderAction("_AddSet");}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

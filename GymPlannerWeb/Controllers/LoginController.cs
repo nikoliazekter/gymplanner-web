@@ -25,7 +25,8 @@ namespace GymPlannerWeb.Controllers
                 var user2 = (from u in db.Users where (u.Login == user.Login && u.Password == user.Password) select u).FirstOrDefault();
                 if (user2 != null)
                 {
-                    return RedirectToAction("Calendar", "Calendar", user2);
+                    Session["Login"] = user.Login;
+                    return RedirectToAction("Calendar", "Calendar");
                 }
                 else
                 {

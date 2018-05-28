@@ -7,17 +7,6 @@
     @Styles.Render("~/Content/css")
     @Scripts.Render("~/bundles/modernizr")
 </head>
-<body>
-    <div class="navbar navbar-inverse navbar-fixed-top">
-        <div class="container">
-            <div class="navbar-collapse collapse">
-                <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("Календар", "Calendar", "Calendar")</li>
-                    <li>@Html.ActionLink("Вийти з системи", "Login", "Login")</li>
-                </ul>
-            </div>
-        </div>
-    </div>
     <div class="container body-content">
         @RenderBody()
         <hr />

@@ -272,6 +272,8 @@
     <Content Include="Views\Workout\_AddSet.cshtml" />
     <Content Include="Views\Day\DeleteWorkout.cshtml" />
     <Content Include="Views\Calendar\DeleteDay.cshtml" />
+    <Content Include="Views\Day\CreateWorkout.cshtml" />
+    <Content Include="Views\Shared\SignedOutLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

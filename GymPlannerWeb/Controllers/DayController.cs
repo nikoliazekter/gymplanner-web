@@ -16,6 +16,11 @@ namespace GymPlannerWeb.Controllers
             return View((from d in db.Days where d.ID_Day == day.ID_Day select d).First().Workouts.ToList());
         }
 
+        public ActionResult CreateWorkout()
+        {
+            return View();
+        }
+
         public ActionResult DeleteWorkout(Workouts workout)
         {
             return View((from w in db.Workouts where w.ID_Workout == workout.ID_Workout select w).First());

@@ -10,10 +10,10 @@ namespace GymPlannerWeb.Controllers
     {
         private NewGymPlannerEntities db = new NewGymPlannerEntities();
 
-        public ActionResult Calendar(Users user)
+        public ActionResult Calendar()
         {
-            Session["Login"] = user.Login;
-            return View((from u in db.Users where u.Login == user.Login select u).First().Days.ToList());
+            string login = Session["Login"].ToString();
+            return View((from u in db.Users where u.Login == login select u).First().Days.ToList());
         }
 
         public ActionResult DeleteDay(Days day)
@@ -35,7 +35,7 @@ namespace GymPlannerWeb.Controllers
             {
             }
             string login = Session["Login"].ToString();
-            return RedirectToAction("Calendar", (from u in db.Users where u.Login == login select u).First());
+            return RedirectToAction("Calendar");
         }
     }
 }
