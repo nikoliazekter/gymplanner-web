@@ -1,0 +1,60 @@
+﻿
+@{
+    ViewBag.Title = "Пошук";
+}
+
+<h2>Пошук</h2>
+
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <label for="date_start" class=".control-label">Початкова дата</label>
+                <input id="date_start" name="dateStart" class="form-control" type="text" data-provide="datepicker" data-date-format="dd/mm/yyyy" autocomplete="off" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <label for="date_end" class=".control-label">Кінцева дата</label>
+                <input id="date_end" name="dateEnd" class="form-control" type="text" data-provide="datepicker" data-date-format="dd/mm/yyyy" autocomplete="off" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <label for="reps" class=".control-label">Кількість повторів</label>
+                <input id="reps" name="reps" class="form-control" type="number" autocomplete="off" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <label for="min_weight" class=".control-label">Мінімальна вага, кг</label>
+                <input id="min_weight" name="minWeight" class="form-control" type="number" autocomplete="off" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <label for="min_weight" class=".control-label">Максимальна вага, кг</label>
+                <input id="max_weight" name="maxWeight" class="form-control" type="number" autocomplete="off" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                <input type="submit" value="Знайти" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div id="results" class="list-group">
+    @foreach (var wpd in ViewBag.workoutsList)
+    {
+        <a href="@Url.Action("GoToDay", "Calendar", new { date = wpd.Item1 })" class="list-group-item">@wpd.Item1 @wpd.Item2</a>
+    }
+</div>

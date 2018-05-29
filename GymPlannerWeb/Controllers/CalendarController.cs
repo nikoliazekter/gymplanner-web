@@ -16,7 +16,6 @@ namespace GymPlannerWeb.Controllers
             return View((from u in db.Users where u.Login == login select u).First().Days.Where(d => d.Workouts.Count > 0).ToList());
         }
 
-        [HttpPost]
         public ActionResult GoToDay(string date)
         {
             string login = Session["Login"].ToString();
