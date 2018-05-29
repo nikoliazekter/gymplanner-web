@@ -1,5 +1,4 @@
-﻿@model  byte[]
-@{
+﻿@{
     ViewBag.Title = "Статистика";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
@@ -8,8 +7,13 @@
     <title>Статистика</title>
 </head>
 <body>
-    <li>@Html.ActionLink("Вибрати вправу", "Index", "ExerciseSelection")</li>
-    <p>@Session["Selected"]</p>
+    <li>@Html.ActionLink("Вибрати вправу", "Choose", "Choose")</li>
+    <h2>
+        Вправа @if (Session["Selected"] != null && Session["Selected"].ToString() != "")
+        {<text>(@Session["Selected"])</text>}
+    else
+    { <text>(Жим ногами)</text>}:
+    </h2>
     <div class="row">
         <img src="@Url.Action("Stat", "Stat")" />
     </div>

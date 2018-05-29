@@ -164,7 +164,7 @@
     <Compile Include="Controllers\CalendarController.cs" />
     <Compile Include="Controllers\DayController.cs" />
     <Compile Include="Controllers\ExerciseController.cs" />
-    <Compile Include="Controllers\ExerciseSelectionController.cs" />
+    <Compile Include="Controllers\ChooseController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\NewAccountController.cs" />
     <Compile Include="Controllers\StatController.cs" />
@@ -360,7 +360,7 @@
     <Content Include="Views\Shared\SignedOutLayout.cshtml" />
     <Content Include="Views\Exercises\Exercises.cshtml" />
     <Content Include="Views\Stat\Stat.cshtml" />
-    <Content Include="Views\ExerciseSelection\SelectExercise.cshtml" />
+    <Content Include="Views\Choose\Choose.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

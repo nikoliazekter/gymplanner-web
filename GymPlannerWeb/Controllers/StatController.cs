@@ -14,16 +14,18 @@ namespace GymPlannerWeb.Controllers
         private NewGymPlannerEntities db = new NewGymPlannerEntities();
         public ActionResult Index()
         {
-            Session["Selected"] = "";
             return View("Stat");
         }
 
         public ActionResult Stat()
         {
             List<string> exercises = new List<string>();
-            exercises.Add("Жим ногами");
-            exercises.Add("Жим лежачи");
-            
+
+            if (Session["Selected"] != null && Session["Selected"].ToString()!="")
+                exercises.Add(Session["Selected"].ToString());
+            else
+                exercises.Add("Жим ногами");
+
             var chart = new Chart();
             chart.Width = 800;
             chart.Height = 500;
@@ -51,7 +53,7 @@ namespace GymPlannerWeb.Controllers
             chart.ChartAreas[0].AxisX.LabelStyle.Format = "dd-MM-yy";
             chart.ChartAreas[0].AxisY.Title = "Вага";
             chart.ChartAreas[0].AxisY.ArrowStyle = System.Web.UI.DataVisualization.Charting.AxisArrowStyle.Triangle;
-            
+
             using (var ms = new MemoryStream())
             {
                 chart.SaveImage(ms, ChartImageFormat.Png);
