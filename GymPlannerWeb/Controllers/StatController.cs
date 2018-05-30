@@ -21,7 +21,7 @@ namespace GymPlannerWeb.Controllers
         {
             List<string> exercises = new List<string>();
 
-            if (Session["Selected"] != null && Session["Selected"].ToString()!="")
+            if (Session["Selected"] != null && Session["Selected"].ToString() != "")
                 exercises.Add(Session["Selected"].ToString());
             else
                 exercises.Add("Жим ногами");

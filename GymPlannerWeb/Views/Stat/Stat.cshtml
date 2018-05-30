@@ -7,12 +7,13 @@
     <title>Статистика</title>
 </head>
 <body>
-    <li>@Html.ActionLink("Вибрати вправу", "Choose", "Choose")</li>
+    <h2> </h2>
+    <li>@Html.ActionLink("Вибрати вправу", "Choose", "Choose", new { r = Request.Url.ToString() }, new { })</li>
     <h2>
-        Вправа @if (Session["Selected"] != null && Session["Selected"].ToString() != "")
-        {<text>(@Session["Selected"])</text>}
+        Вправа @if (Session["Selected"] != null && !string.IsNullOrEmpty(Session["Selected"].ToString()))
+        {<text>@Session["Selected"]</text>}
     else
-    { <text>(Жим ногами)</text>}:
+    { <text>(Жим ногами)</text>}
     </h2>
     <div class="row">
         <img src="@Url.Action("Stat", "Stat")" />

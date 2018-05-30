@@ -365,6 +365,7 @@
     <Content Include="Views\Exercises\Exercises.cshtml" />
     <Content Include="Views\Stat\Stat.cshtml" />
     <Content Include="Views\Choose\Choose.cshtml" />
+    <Content Include="Views\Search\Search.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

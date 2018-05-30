@@ -24,7 +24,7 @@ namespace GymPlannerWeb.Controllers
                 if (exercise.Name.ToString().ToLower() == exerciseName.ToLower())
                 {
                     Session["Selected"] = exercise.Name.ToString();
-                    return RedirectToAction("index", "Stat");
+                    return Redirect(Request.QueryString["r"]);
                 }
             }
             return View("Choose", db.Exercises.ToList());

@@ -40,18 +40,30 @@ namespace GymPlannerWeb.Controllers
             //this.workoutsListView.Items.Clear();
 
             string login = Session["Login"].ToString();
-            var startDate = DateTime.Parse(dateStart);
-            var endDate = DateTime.Parse(dateEnd);
+            DateTime startDate;
+            DateTime endDate;
+            if (string.IsNullOrEmpty(dateStart))
+                startDate = DateTime.Today.AddYears(-1);
+            else
+                startDate = DateTime.Parse(dateStart);
+
+            if (string.IsNullOrEmpty(dateEnd))
+                endDate = DateTime.Today;
+            else
+                endDate = DateTime.Parse(dateEnd);
 
             var workouts = (from w in db.Workouts select w);
 
             workouts = workouts.Where(w => w.Days.Any(d => d.Users.Any(u => u.Login == login)));
 
-            workouts = workouts.Where(w => w.Days.Any(d => d.Date.CompareTo(endDate) <= 0 && d.Date.CompareTo(startDate) >= 0 && d.Workouts.Count() > 0));
+            workouts = workouts.Where(w => w.Days.Any(d => d.Date.CompareTo(endDate) <= 0  && d.Date.CompareTo(startDate) >= 0 && d.Workouts.Count() > 0));
 
-            //if (this.searchExerciseChosen)
-            //    workouts = workouts.Where(w => w.Exercises.Any(ex => ex.Name == ExerciseNameLabel.Text));
 
+            if (Session["Selected"] != null && !string.IsNullOrEmpty(Session["Selected"].ToString()))
+            {
+                var exercise = Session["Selected"].ToString();
+                workouts = workouts.Where(w => w.Exercises.Any(ex => ex.Name == exercise));
+            }
             if (reps != null)
                 workouts = workouts.Where(w => w.Sets.Any(s => s.Num_Reps == reps));
 

@@ -8,8 +8,18 @@
 @using (Html.BeginForm())
 {
     <div class="form-horizontal">
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                <li>@Html.ActionLink("Вибрати вправу", "Choose", "Choose", new { r = Request.Url.ToString() }, new { })</li>
+                <h4>
+                    Вправа: @if (Session["Selected"] != null && !string.IsNullOrEmpty(Session["Selected"].ToString()))
+                    {<label>@Session["Selected"]</label>}
+                else
+                { <text></text>}
+                </h4>
+            </div>
+        </div>
         <div class="form-group">
             <div class="col-md-10">
                 <label for="date_start" class=".control-label">Початкова дата</label>
