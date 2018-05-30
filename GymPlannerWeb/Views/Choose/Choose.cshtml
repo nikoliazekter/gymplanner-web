@@ -65,6 +65,10 @@
             <div class="col-md-10">
                 <label for="exampleFormControlSelect">Список вправ</label>
                 <select multiple class="form-control" id="exampleFormControlSelect" size=15 onchange="if (this.selectedIndex) selectedEvent();">
+                    @foreach (var ex in Model)
+                    {
+                        <option>@Html.DisplayFor(modelItem => ex.Name)</option>
+                    }
                 </select>
             </div>
         </div>
