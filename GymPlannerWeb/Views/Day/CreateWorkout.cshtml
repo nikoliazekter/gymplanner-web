@@ -1,13 +1,81 @@
-﻿@model GymPlannerWeb.Workouts
+﻿@model IEnumerable<GymPlannerWeb.Exercises>
+
+
+
+<script type="text/javascript">
+    function changedEvent() {
+        @{
+    string arrStr = "";
+    try
+    {
+        System.Web.Script.Serialization.JavaScriptSerializer js = new System.Web.Script.Serialization.JavaScriptSerializer();
+        var data = Model.Select(p => p.Name.ToString());
+        arrStr = js.Serialize(data);
+    }
+    catch
+    {
+
+    }
+
+}
+        var select = document.getElementById("exampleFormControlSelect");
+        var option = document.createElement("option");
+        var node = document.createTextNode("");
+        var text = document.getElementById("exercise_Name").value.toString().toLowerCase();
+        var length = select.options.length;
+        $('#exampleFormControlSelect')
+            .empty()
+        var exercises = JSON.parse('@arrStr'.replace(/&quot;/g, '"'));
+        var exNum = exercises.length;
+        for (var i = 0; i < exNum; i++) {
+            if (((exercises[i].toString()).toLowerCase()).indexOf(text) != -1) {
+                node = document.createTextNode(exercises[i].toString())
+                option = document.createElement("option");
+                option.appendChild(node);
+                option.value = exercises[i].toString();
+                select.appendChild(option);
+            }
+        }
+    }
+    function selectedEvent() {
+        var select = document.getElementById("exampleFormControlSelect");
+        document.getElementById("exercise_Name").value = select.options[select.selectedIndex].value;
+    }
+</script>
 
 @{
-    ViewBag.Title = "Додати тренування";
+    ViewBag.Title = "Choose";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<h2>CreateWorkout</h2>
+<h2>Вибір вправи</h2>
 
-@{Html.RenderAction("_AddSet");}
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
-</div>
+        <div class="form-group">
+            <div class="col-md-10">
+                <label for="exerciseName" class=".control-label">Введіть назву вправи</label>
+                <input id="exercise_Name" name="exerciseName" oninput="changedEvent()" class="form-control" type="text" autocomplete="off" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                <label for="exampleFormControlSelect">Список вправ</label>
+                <select multiple class="form-control" id="exampleFormControlSelect" size=15 onchange="if (this.selectedIndex) selectedEvent();">
+                    @foreach (var ex in Model)
+                    {
+                        <option>@Html.DisplayFor(modelItem => ex.Name)</option>
+                    }
+                </select>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                <input type="submit" value="Вибрати" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}

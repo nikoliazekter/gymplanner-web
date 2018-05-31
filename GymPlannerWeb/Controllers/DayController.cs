@@ -21,7 +21,29 @@ namespace GymPlannerWeb.Controllers
 
         public ActionResult CreateWorkout()
         {
-            return View();
+            return View(db.Exercises.ToList());
+        }
+
+        [HttpPost]
+        public ActionResult CreateWorkout(string exerciseName)
+        {
+            foreach (var exercise in db.Exercises.ToList())
+            {
+                if (exercise.Name.ToString().ToLower() == exerciseName.ToLower())
+                {
+                    Workouts workout = new Workouts
+                    {
+                        Num_Sets = 0
+                    };
+                    workout.Exercises.Add(db.Exercises.FirstOrDefault(ex => ex.Name == exerciseName));
+                    int dayId = (int)Session["ID_Day"];
+                    workout.Days.Add(db.Days.FirstOrDefault(d => d.ID_Day == dayId));
+                    db.Workouts.Add(workout);
+                    db.SaveChanges();
+                    return RedirectToAction("Workout", "Workout", workout);
+                }
+            }
+            return View(db.Exercises.ToList());
         }
 
         public ActionResult DeleteWorkout(Workouts workout)

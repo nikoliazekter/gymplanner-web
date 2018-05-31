@@ -26,6 +26,8 @@ namespace GymPlannerWeb.Controllers
                 if (user2 != null)
                 {
                     Session["Login"] = user.Login;
+                    if (user.Login == "admin")
+                        return RedirectToAction("Admin", "Admin");
                     return RedirectToAction("Calendar", "Calendar");
                 }
                 else
